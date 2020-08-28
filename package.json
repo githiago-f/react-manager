@@ -11,5 +11,10 @@
   "scripts": {
     "dev": "tsc",
     "start": "npx electron ."
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0"
   }
 }
