@@ -1,19 +1,16 @@
 import { createMenu } from '../../factories/createMenu';
 import { createMenuItem } from '../../factories/createMenuItem';
 import { createProject } from '../../actions/createProject';
+import { selectFolder } from '../../actions/selectFolder';
 
 const menu = function () {
   const buttons = [];
-  // open selectors
+
   const createReactApp = createMenuItem({
     label: 'Create React App',
     type: 'normal',
     click: () => {
-      createProject({
-        name: 'novo-projeto',
-        useTypescript: true,
-        path: ''
-      });
+      selectFolder();
     }
   });
 

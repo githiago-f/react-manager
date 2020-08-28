@@ -1,12 +1,11 @@
-
-import { resolve } from 'path';
 import { Tray, Menu } from 'electron';
 import { createWindow } from './createWindow';
+import UI from '../UI';
 
 export const createApplication = ({ menu }: { menu: Menu }) => {
   const win = createWindow();
 
-  const tray = new Tray(resolve('./src/UI/icons/808080.png'));
+  const tray = new Tray(UI.images.logo);
   tray.setContextMenu(menu);
 
   return {
