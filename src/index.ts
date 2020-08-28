@@ -12,6 +12,5 @@ app.on('ready', () => {
     } })
   ]);
 
-  const tray = createApplication();
-  tray.setContextMenu(menu);
+  createApplication({ menu });
 });

@@ -1,9 +1,13 @@
 
 import * as path from 'path';
-import { Tray } from 'electron';
+import { Tray, Menu } from 'electron';
 
-export const createApplication = () => {
+export const createApplication = ({ menu }: { menu: Menu }) => {
   const tray = new Tray(path.resolve('./src/UI/icons/808080.png'));
 
-  return tray;
+  tray.setContextMenu(menu);
+
+  return {
+    tray
+  };
 };
