@@ -1,7 +1,11 @@
 {
   "projects": [
     {
-      "label": "React"
+      "label": "Project 1",
+      "data": {
+        "paht": "C:/",
+        "status": 0
+      }
     }
   ]
 }
