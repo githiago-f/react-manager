@@ -2,9 +2,7 @@ import {Tray} from 'electron';
 import menu from '../UI/menu';
 import UI from '../UI';
 import Events from '../helpers/Events';
-import { addProjectToList } from '../actions/addProjectToList';
-import { askIfWantToOpenCode } from '../actions/askIfWantToOpenCode';
-import { openCode } from '../actions';
+import { openCode, addProjectToList, askIfWantToOpenCode } from '../actions';
 
 let tray: Tray = null;
 

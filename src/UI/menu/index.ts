@@ -1,7 +1,13 @@
 import { createMenu, createMenuItem } from '../../factories';
-import { createProject, selectName, loadProjects, openCode, selectFolder } from '../../actions';
+import {
+  createProject,
+  selectName,
+  loadProjects,
+  openCode,
+  selectFolder,
+  addProjectToList
+} from '../../actions';
 import { app } from 'electron';
-import { addProjectToList } from '../../actions/addProjectToList';
 
 const menu = async function () {
   const buttons = [];

@@ -4,4 +4,6 @@ import { createApplication } from './factories/createApplication';
 
 app.on('ready', createApplication);
 
+app.setName('React Project Manager');
+
 // new Http();
