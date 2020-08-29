@@ -1,5 +1,6 @@
 import { exec } from 'child_process';
 import { dialog } from 'electron';
+import { addProjectToList } from './addProjectToList';
 
 interface IProject {
   name: string;
@@ -20,9 +21,13 @@ export const createProject = async (project: IProject) => {
   }
 
   const reactProccess = exec(command, { cwd: project.path });
+
   reactProccess.stderr.on('error', (err) => {
     if(err) dialog.showErrorBox('Error while creating react app', err.message);
   });
+
   reactProccess.stdout.on('data', console.log);
+
+  await addProjectToList(project.path);
   return;
 };

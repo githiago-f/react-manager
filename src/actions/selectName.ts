@@ -1,6 +1,13 @@
 import { dialog } from 'electron';
 
-export const selectName = async () => {
+interface IPath {
+  canceled: boolean;
+  projectName?: string;
+  projectPath?: string;
+  path?: string;
+}
+
+export const selectName = async (): Promise<IPath> => {
   const saveTo = await dialog.showSaveDialog(null, {
     properties: ['createDirectory'],
     title: 'Create project\'s name'
@@ -8,6 +15,9 @@ export const selectName = async () => {
 
   if(saveTo.canceled) {
     dialog.showErrorBox('Invalid path', 'You have canceled the path selection for the project');
+    return {
+      canceled: true
+    };
   }
 
   const path = saveTo.filePath;
@@ -18,6 +28,7 @@ export const selectName = async () => {
   return {
     projectName,
     projectPath,
-    path
+    path,
+    canceled: false
   };
 };

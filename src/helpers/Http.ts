@@ -1,19 +1,22 @@
 import * as http from 'http';
 
 export default class Http {
+  private listeners = {
+    '/viewlogs/:appId': () => {}
+  };
+
   constructor(){
     http.createServer((req, res)=>{
-      res.setHeader('Content-Type', 'application/json');
-      setInterval(()=> {
-        const content = {
-          date: new Date()
-        };
-        res.write(JSON.stringify(content));
-      }, 2000);
+      // this.getListener(req.url);
+      req.on('close', this.onClose.bind(this));
     }).listen(8000);
   }
 
-  requestListener(message: any) {
-    console.log(message);
+  getListener(url: string) {
+    return this.listeners[url];
+  }
+
+  onClose() {
+    console.log('emmit closed');
   }
 }
