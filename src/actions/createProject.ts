@@ -1,4 +1,5 @@
 import { exec } from 'child_process';
+import { dialog } from 'electron';
 
 interface IProject {
   name: string;
@@ -8,17 +9,20 @@ interface IProject {
   useTypescript?: boolean;
 }
 
-export const createProject = (project: IProject) => {
+export const createProject = async (project: IProject) => {
   let command = `npx create-react-app ${project.name}`;
 
   if(project.useTemplate){
     command += ' --template ' + project.template;
   }
   if(project.useTypescript) {
-    command += ' --typescript';
+    command += ' --template typescript';
   }
 
   const reactProccess = exec(command, { cwd: project.path });
-  reactProccess.stderr.on('data', console.log);
+  reactProccess.stderr.on('error', (err) => {
+    if(err) dialog.showErrorBox('Error while creating react app', err.message);
+  });
   reactProccess.stdout.on('data', console.log);
+  return;
 };

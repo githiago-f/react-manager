@@ -1,14 +1,14 @@
 import Window from '../classes/Window';
-import { remote } from 'electron';
+import { dialog } from 'electron';
 
-export const selectFolder = async (props?: {title:string;}) => {
+export const selectFolder = async () => {
   const curWindow = Window.instance.getWindow;
 
-  const dir = await remote.dialog.showOpenDialog(curWindow, {
-    properties: ['createDirectory'],
-    title: props.title || 'Select project\'s destination',
+  const selectDir = await dialog.showOpenDialog(curWindow, {
+    properties: ['openDirectory'],
+    title: 'Select project\'s destination',
     buttonLabel: 'Select'
   });
 
-  console.log(dir.filePaths);
+  return selectDir.filePaths[0];
 };

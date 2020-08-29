@@ -5,11 +5,12 @@ import UI from '../UI';
 
 export const createWindow: () => BrowserWindow = () => {
   const options: BrowserWindowConstructorOptions = {
-    icon: UI.images.logo
+    icon: UI.images.logo,
   };
 
   Window.instance.setWindow = new BrowserWindow(options);
   const win = Window.instance.getWindow;
+  win.hide();
   win.loadFile(UI.pages.main);
 
   win.on('minimize', () => {
