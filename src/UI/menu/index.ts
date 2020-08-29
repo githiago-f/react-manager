@@ -15,6 +15,7 @@ const menu = async function () {
         await createProject({
           name: project.projectName,
           path: project.projectPath,
+          fullPath: project.path,
           useTypescript: true
         });
       }
@@ -56,14 +57,6 @@ const menu = async function () {
           click: () => {
             openCode(project.path);
           }
-        },
-        {
-          label: 'Run',
-          type: 'normal'
-        },
-        {
-          label: 'View Logs',
-          type: 'normal'
         }
       ]
     });

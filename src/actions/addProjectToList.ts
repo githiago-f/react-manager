@@ -1,6 +1,6 @@
 import { promises } from 'fs';
 import { loadProjects } from './loadProjects';
-import Events from './../helpers/Event';
+import Events from '../helpers/Events';
 
 export const addProjectToList = async (projectPath: string) => {
   const projects = await loadProjects();

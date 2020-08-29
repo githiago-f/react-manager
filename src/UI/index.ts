@@ -10,7 +10,8 @@ const getPage = (page: string) => {
 
 export default {
   images: {
-    logo: getImage('808080.png')
+    logo: getImage('online.png'),
+    loadingLogo: getImage('loading.png')
   },
   pages: {
     main: getPage('index.html')

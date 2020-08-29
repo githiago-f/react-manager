@@ -20,7 +20,7 @@ export const selectName = async (): Promise<IPath> => {
     };
   }
 
-  const path = saveTo.filePath;
+  const path = saveTo.filePath.replace(/\\/gi, '/');
   const splitedPath = path.split('/');
   const projectName = splitedPath.pop();
   const projectPath = splitedPath.join('/');

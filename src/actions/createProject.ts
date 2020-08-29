@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
 import { dialog } from 'electron';
-import { addProjectToList } from './addProjectToList';
+import Events from '../helpers/Events';
 
 interface IProject {
   name: string;
@@ -8,6 +8,7 @@ interface IProject {
   useTemplate?: boolean;
   template?: string;
   useTypescript?: boolean;
+  fullPath?: string;
 }
 
 export const createProject = async (project: IProject) => {
@@ -26,8 +27,16 @@ export const createProject = async (project: IProject) => {
     if(err) dialog.showErrorBox('Error while creating react app', err.message);
   });
 
-  reactProccess.stdout.on('data', console.log);
+  reactProccess.stdout.on('data', (chunk) => {
+    const startsLoading = /Creating a new React app/gi.test(chunk);
+    const hasFinished = /Happy hacking!/gi.test(chunk);
 
-  await addProjectToList(project.path);
+    if(startsLoading) {
+      Events.notify('CREATING_PROJECT', true);
+    } else if (hasFinished) {
+      Events.notify('CREATING_PROJECT', false, project.fullPath);
+    }
+  });
+
   return;
 };

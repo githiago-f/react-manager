@@ -14,8 +14,8 @@ class Events {
     Events.handlers[eventName].push(event);
   }
 
-  notify(handler: Handlers) {
-    Events.handlers[handler].forEach(fn => fn());
+  notify(handler: Handlers, ...args: any[]) {
+    Events.handlers[handler].forEach(fn => fn(...args));
   }
 }
 
