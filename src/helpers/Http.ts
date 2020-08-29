@@ -1,14 +1,19 @@
-import http from 'http';
+import * as http from 'http';
 
 export default class Http {
-  static readonly instance = new Http();
-  private constructor(){
+  constructor(){
     http.createServer((req, res)=>{
-      req.addListener('data', this.requestListener.bind(this, res));
+      res.setHeader('Content-Type', 'application/json');
+      setInterval(()=> {
+        const content = {
+          date: new Date()
+        };
+        res.write(JSON.stringify(content));
+      }, 2000);
     }).listen(8000);
   }
 
-  requestListener(res: http.ServerResponse) {
-    res.write('<html><body><h1>Titulo da página</h1></body></html>');
+  requestListener(message: any) {
+    console.log(message);
   }
 }
