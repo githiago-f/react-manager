@@ -1,10 +1,8 @@
-import Window from '../classes/Window';
 import { dialog } from 'electron';
 
 export const selectFolder = async () => {
-  const curWindow = Window.instance.getWindow;
 
-  const selectDir = await dialog.showOpenDialog(curWindow, {
+  const selectDir = await dialog.showOpenDialog(null, {
     properties: ['openDirectory'],
     title: 'Select project\'s destination',
     buttonLabel: 'Select'

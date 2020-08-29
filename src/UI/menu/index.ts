@@ -3,7 +3,6 @@ import { createMenuItem } from '../../factories/createMenuItem';
 import { createProject } from '../../actions/createProject';
 import { selectName } from '../../actions/selectName';
 import { openCode } from '../../actions/openOnCode';
-import Window from '../../classes/Window';
 import { app } from 'electron';
 
 const menu = function () {

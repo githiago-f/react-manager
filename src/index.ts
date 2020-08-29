@@ -1,13 +1,4 @@
-import { app, Tray } from 'electron';
-import menu from './UI/menu';
-import UI from './UI';
+import { app } from 'electron';
+import { createApplication } from './factories/createApplication';
 
-let tray = null;
-
-app.on('ready', () => {
-  if(tray === null){
-    tray = new Tray(UI.images.logo);
-    tray.setContextMenu(menu);
-    tray.setTitle('React Projects');
-  }
-});
+app.on('ready', createApplication);

@@ -1,8 +1,7 @@
 import { dialog } from 'electron';
-import Window from '../classes/Window';
 
 export const selectName = async () => {
-  const saveTo = await dialog.showSaveDialog(Window.instance.getWindow, {
+  const saveTo = await dialog.showSaveDialog(null, {
     properties: ['createDirectory'],
     title: 'Create project\'s name'
   });
