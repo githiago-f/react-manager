@@ -1,22 +1,36 @@
 {
   "name": "project-manager",
   "version": "0.1.0",
+  "author": {
+    "email": "tfarias@protonmail.com",
+    "name": "Thiago Farias",
+    "url": "https://github.com/githiago-f"
+  },
+  "description": "A application destinated to creating new react applications with a usefull double click interface",
   "main": "out/index.js",
   "license": "MIT",
-  "dependencies": {
-    "electron": "10.0.1",
-    "jest": "^26.4.2",
-    "ts-jest": "^26.3.0",
-    "typescript": "^4.0.2"
-  },
   "scripts": {
     "dev": "tsc",
-    "start": "npx electron ."
+    "start": "npx electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
-    "eslint": "^7.7.0"
+    "electron-builder": "^22.8.0",
+    "eslint": "^7.7.0",
+    "electron": "10.0.1",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
+  },
+  "build": {
+    "appId": "reactmanager.tray",
+    "win": {
+      "target": "msi",
+      "icon": "src/UI/images/online.png"
+    }
   }
 }
