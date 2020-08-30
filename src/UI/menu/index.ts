@@ -8,6 +8,7 @@ import {
   addProjectToList
 } from '../../actions';
 import { app } from 'electron';
+import { removeFromProjects } from '../../actions/removeFromProjects';
 
 const menu = async function () {
   const buttons = [];
@@ -62,6 +63,13 @@ const menu = async function () {
           type: 'normal',
           click: () => {
             openCode(project.path);
+          }
+        },
+        {
+          label: 'Remove',
+          type: 'normal',
+          click: () => {
+            removeFromProjects(project.name);
           }
         }
       ]
