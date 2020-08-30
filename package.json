@@ -19,9 +19,9 @@
     "@types/jest": "^26.0.10",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
+    "electron": "10.0.1",
     "electron-builder": "^22.8.0",
     "eslint": "^7.7.0",
-    "electron": "10.0.1",
     "jest": "^26.4.2",
     "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
@@ -29,8 +29,12 @@
   "build": {
     "appId": "reactmanager.tray",
     "win": {
-      "target": "msi",
-      "icon": "src/UI/images/online.png"
+      "target": "nsis",
+      "icon": "src/UI/images/online.png",
+      "extraResources": [
+        "./src/UI/images/**",
+        "./data/**"
+      ]
     }
   }
 }

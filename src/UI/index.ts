@@ -1,11 +1,11 @@
 import { resolve, join } from 'path';
 
 const getImage = (icon: string) => {
-  return resolve(join('./src/UI/images', icon));
+  return resolve(join('./resources/src/UI/images', icon));
 };
 
 const getPage = (page: string) => {
-  return resolve(join('./src/UI/pages', page));
+  return resolve(join('./resources/src/UI/pages', page));
 };
 
 export default {

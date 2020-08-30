@@ -11,7 +11,7 @@ export const addProjectToList = async (projectPath: string) => {
     status: 0
   });
 
-  await promises.writeFile('./data/projects.json', JSON.stringify({ projects }));
+  await promises.writeFile('./resources/data/projects.json', JSON.stringify({ projects }));
 
   Events.notify('UPDATE_MENU');
 };

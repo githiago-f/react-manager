@@ -7,7 +7,7 @@ interface IProject {
 }
 
 export const loadProjects: () => Promise<IProject[]> = async () => {
-  const file = await promises.readFile('./data/projects.json');
+  const file = await promises.readFile('./resources/data/projects.json');
   const projects = JSON.parse(file.toString());
   projects.projects = projects.projects || [];
   return projects.projects;
