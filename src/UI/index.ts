@@ -1,11 +1,14 @@
 import { resolve, join } from 'path';
+import { envPath } from '../helpers/envPath';
 
 const getImage = (icon: string) => {
-  return resolve(join('./resources/src/UI/images', icon));
+  const path = envPath('./src/UI/images', './resources/src/UI/images');
+  return resolve(join(path, icon));
 };
 
 const getPage = (page: string) => {
-  return resolve(join('./resources/src/UI/pages', page));
+  const path = envPath('./src/UI/pages', './resources/src/UI/pages');
+  return resolve(join(path, page));
 };
 
 export default {
