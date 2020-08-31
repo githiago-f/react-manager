@@ -1,6 +1,7 @@
 import { loadProjects } from './loadProjects';
 import { promises } from 'fs';
 import { getDataSource } from '../helpers/getDataSource';
+import Events from './../helpers/Events';
 
 export const removeFromProjects = async (projectName: string) => {
   const projectsData = await loadProjects();
@@ -21,5 +22,8 @@ export const removeFromProjects = async (projectName: string) => {
       getDataSource(),
       projectsFileData
     );
+
+  Events.notify('UPDATE_MENU');
+
   return true;
 };
