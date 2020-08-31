@@ -19,7 +19,8 @@ export const createProject = async (project: IProject) => {
   });
 
   if(!continueCreation) {
-    return dialog.showMessageBox(null, { title: 'Okay!', message: 'I will not create.'});
+    dialog.showMessageBox(null, { title: 'Okay!', message: 'I will not create.'});
+    return false;
   }
 
   let command = `npx create-react-app ${project.name}`;
@@ -53,4 +54,6 @@ export const createProject = async (project: IProject) => {
       reactProccess.unref();
     }
   });
+
+  return true;
 };
