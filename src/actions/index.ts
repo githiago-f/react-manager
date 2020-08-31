@@ -4,4 +4,4 @@ export * from './openOnCode';
 export * from './selectFolder';
 export * from './selectName';
 export * from './addProjectToList';
-export * from './askIfWantToOpenCode';
+export * from './askToUserActions';

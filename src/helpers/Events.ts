@@ -2,7 +2,7 @@ type Handlers = keyof (typeof Events.handlers)
 
 class Events {
   static handlers = {
-    'OPEN_EVENT': [],
+    'INIT_CREATION': [],
     'UPDATE_MENU': [],
     'CREATING_PROJECT': []
   };

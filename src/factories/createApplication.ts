@@ -16,6 +16,14 @@ export const createApplication = async () => {
   });
 
   tray = new Tray(UI.images.logo);
+
+  const openMenu = () => {
+    tray.popUpContextMenu();
+  };
+
+  tray.on('click', openMenu);
+  tray.on('double-click', openMenu);
+
   tray.setContextMenu(await menu());
   tray.setTitle('React Projects');
   tray.setToolTip('React Projects');
@@ -24,9 +32,14 @@ export const createApplication = async () => {
     tray.setContextMenu(await menu());
   });
 
+  Events.register('INIT_CREATION', () => {
+    tray.setToolTip('Starting creation...');
+  });
+
   Events.register('CREATING_PROJECT', async (isCreating: boolean, projectPath?: string) => {
     if(isCreating){
       tray.setImage(UI.images.loadingLogo);
+      tray.setToolTip('Creting new...');
     } else {
       tray.setImage(UI.images.logo);
       await addProjectToList(projectPath);
@@ -35,6 +48,7 @@ export const createApplication = async () => {
       if(canOpenInCode){
         openCode(projectPath);
       }
+      tray.setToolTip('React Projects');
     }
   });
 };
